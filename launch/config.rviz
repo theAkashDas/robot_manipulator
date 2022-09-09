@@ -6,9 +6,15 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Axes1
+        - /RobotModel1
         - /RobotModel1/Links1
         - /RobotModel1/Links1/base_link1
         - /RobotModel1/Links1/link_11
+        - /RobotModel1/Links1/link_21
+        - /RobotModel1/Links1/link_31
+        - /RobotModel1/Links1/link_41
+        - /RobotModel1/Links1/link_51
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz/Selection
@@ -84,6 +90,26 @@ Visualization Manager:
           Show Axes: true
           Show Trail: false
           Value: true
+        link_2:
+          Alpha: 1
+          Show Axes: true
+          Show Trail: false
+          Value: true
+        link_3:
+          Alpha: 1
+          Show Axes: true
+          Show Trail: false
+          Value: true
+        link_4:
+          Alpha: 1
+          Show Axes: true
+          Show Trail: false
+          Value: true
+        link_5:
+          Alpha: 1
+          Show Axes: true
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -118,7 +144,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 14.71372127532959
+      Distance: 8.606112480163574
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -126,17 +152,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -1.1692308187484741
+        Y: -0.32209065556526184
+        Z: 2.0548348426818848
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.785398006439209
+      Pitch: 0.08039810508489609
       Target Frame: <Fixed Frame>
-      Yaw: 0.785398006439209
+      Yaw: 0.2254047691822052
     Saved: ~
 Window Geometry:
   Displays:

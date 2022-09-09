@@ -1,6 +1,6 @@
 <launch>
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find arm_a)/urdf/arm.xacro'"/>
-    <!-- <param name="arm" command="cat $(find arm_a)/urdf/arm.xacro"/> -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find arm_a)/urdf/arm_b.xacro'"/>
+
     <!-- COmbine joint values -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
 

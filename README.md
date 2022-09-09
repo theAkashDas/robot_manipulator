@@ -37,13 +37,31 @@ roslaunch arm_a arm_rviz.launch
 roslaunch arm_a arm_rviz.launch
 ```
 
+#### 0.0.5
+- Added a xacro macro file named link_joint.xacro
+- This file contains the links and joint definition as a function
+- In arm_b.xacro we are just calling those function from the link_joint.xacro file and using them.
+- Need to include this file in arm_b.xacro
+```
+<xacro:include filename = "$(find arm_a)/urdf/link_joint.xacro" />
+```
+- Made the file name change in the launch file.
+- After that
+```
+roslaunch arm_a arm_rviz.launch
+```
+- Refer to the Video 2.
+
 ---
 ### Images :
 
 #### Image 1 :
-<img src="Images/a1.png" width="740"/>
+<img src="Images/a1.png" width="840"/>
 
 ### Vidoes :
 
 #### Video 1 :
 ![A](https://github.com/theAkashDas/robot_manipulator/blob/master/Videos/v1.gif) 
+
+#### Video 2 :
+![A](https://github.com/theAkashDas/robot_manipulator/blob/master/Videos/v2.mp4) 

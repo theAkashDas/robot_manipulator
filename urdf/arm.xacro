@@ -3,7 +3,7 @@
 <robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
 	<link name = "base_link">
 		<visual>
-			<origin rpy = "0 0 0" xyz = "0 0 0" />
+			<origin rpy = "0 0 0" xyz = "0 0 0" /> 			<!-- origin of the base link is at 0,0,0-->
 			<geometry>
 				<box size = "1 1 1" />
 			</geometry>
@@ -20,10 +20,79 @@
 
 	<link name = "link_1">
 		<visual>
-			<origin rpy = "0 0 0" xyz = "0 0 0.2" />
+			<origin rpy = "0 0 0" xyz = "0 0 0.2" />		<!-- origin of the link_1 is at 0,0,0.2-->
 			<geometry>
 				<cylinder radius = "0.35" length = "0.4" />
 			</geometry>
 		</visual>
 	</link>
+
+	<joint name = "link_1_link_2" type ="revolute">
+		<axis xyz = "0 1 0"/>
+		<limit effort="1000.0" lower="-3.14" upper = "3.14" velocity = "0.5"/>
+		<origin rpy = "0 0 0" xyz = " 0 0 0.4"/>      		<!-- Distance from prev joint where the next joint will happen -->
+		<parent link = "link_1"/>
+		<child link = "link_2"/>
+	</joint>		
+
+	<link name = "link_2">
+		<visual>
+			<origin rpy = "0 0 0" xyz = "0 0 0.4" />
+			<geometry>
+				<cylinder radius = "0.15" length = "0.8" />
+			</geometry>
+		</visual>
+	</link>
+
+	<joint name = "link_2_link_3" type ="revolute">
+		<axis xyz = "0 1 0"/>
+		<limit effort="1000.0" lower="-3.14" upper = "3.14" velocity = "0.5"/>
+		<origin rpy = "0 0 0" xyz = " 0 0 0.8"/> <!-- Distance from prev joint where the next joint will happen -->
+		<parent link = "link_2"/>
+		<child link = "link_3"/>
+	</joint>		
+
+	<link name = "link_3">
+		<visual>
+			<origin rpy = "0 0 0" xyz = "0 0 0.5" />
+			<geometry>
+				<cylinder radius = "0.10" length = "1" />
+			</geometry>
+		</visual>
+	</link>
+
+	<joint name = "link_3_link_4" type ="revolute">
+		<axis xyz = "0 1 0"/>
+		<limit effort="1000.0" lower="-3.14" upper = "3.14" velocity = "0.5"/>
+		<origin rpy = "0 0 0" xyz = " 0 0 1"/> <!-- Distance from prev joint where the next joint will happen -->
+		<parent link = "link_3"/>
+		<child link = "link_4"/>
+	</joint>		
+
+	<link name = "link_4">
+		<visual>
+			<origin rpy = "0 0 0" xyz = "0 0 0.5" />
+			<geometry>
+				<cylinder radius = "0.10" length = "1" />
+			</geometry>
+		</visual>
+	</link>
+
+	<joint name = "link_4_link_5" type ="revolute">
+		<axis xyz = "0 0 1"/>
+		<limit effort="1000.0" lower="-3.14" upper = "3.14" velocity = "0.5"/>
+		<origin rpy = "0 0 0" xyz = " 0 0 1"/> <!-- Distance from prev joint where the next joint will happen -->
+		<parent link = "link_4"/>
+		<child link = "link_5"/>
+	</joint>		
+
+	<link name = "link_5">
+		<visual>
+			<origin rpy = "0 0 0" xyz = "0 0 0.1" />
+			<geometry>
+				<cylinder radius = "0.2" length = "0.2" />
+			</geometry>
+		</visual>
+	</link>
+
 </robot>
