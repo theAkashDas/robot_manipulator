@@ -52,6 +52,12 @@ roslaunch arm_a arm_rviz.launch
 ```
 - Refer to the Video 2.
 
+#### 0.0.6
+- Added a file named robot_parameters.xacro.
+- this file contains the name of the links and joints as parameters.
+- used "${link_name}" to get the link name from the xacro file.
+- So if we need to change the name or the parameters we have to that in that specific file only.
+
 ---
 ### Images :
 

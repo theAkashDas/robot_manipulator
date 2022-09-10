@@ -3,19 +3,82 @@
 <robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 	<xacro:include filename = "$(find arm_a)/urdf/link_joint.xacro" />
+	<xacro:include filename = "$(find arm_a)/urdf/robot_parameters.xacro" />
 	
-	<xacro:m_link_box name = "base_link" origin_rpy = "0 0 0" origin_xyz = "0 0 0" size = "1 1 1" />
-	<xacro:m_joint name = "base_link_link_1" type = "revolute" axis_xyz = "0 0 1" origin_rpy = "0 0 0" origin_xyz = "0 0 0.5" parent = "base_link" child = "link_1" />
-    <xacro:m_link_cylinder name = "link_1" origin_rpy = "0 0 0" origin_xyz = "0 0 0.2" radius = "0.35" length="0.4" />
-    <xacro:m_joint name = "link_1_link_2" type = "revolute" axis_xyz = "0 1 0" origin_rpy = "0 0 0" origin_xyz = "0 0 0.4" parent = "link_1" child = "link_2" />
-    <xacro:m_link_cylinder name = "link_2" origin_rpy = "0 0 0" origin_xyz = "0 0 0.4" radius = "0.10" length="0.8" />
-    <xacro:m_joint name = "link_2_link_3" type = "revolute" axis_xyz = "0 1 0" origin_rpy = "0 0 0" origin_xyz = "0 0 0.8" parent = "link_2" child = "link_3" />
-	<xacro:m_link_cylinder name = "link_3" origin_rpy = "0 0 0" origin_xyz = "0 0 0.5" radius = "0.10" length="1" />
-    <xacro:m_joint name = "link_3_link_4" type = "revolute" axis_xyz = "0 1 0" origin_rpy = "0 0 0" origin_xyz = "0 0 1" parent = "link_3" child = "link_4" />
+	<xacro:m_link_box 		name = "${l00}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0" 
+							size = "1 1 1" />
 
-	<xacro:m_link_cylinder name = "link_4" origin_rpy = "0 0 0" origin_xyz = "0 0 0.5" radius = "0.10" length="1" />
-    <xacro:m_joint name = "link_4_link_5" type = "revolute" axis_xyz = "0 0 1" origin_rpy = "0 0 0" origin_xyz = "0 0 1" parent = "link_4" child = "link_5" />
-	<xacro:m_link_cylinder name = "link_5" origin_rpy = "0 0 0" origin_xyz = "0 0 0.1" radius = "0.2" length="0.2" />
+	<xacro:m_joint 			name = "${l00}_${l01}" 
+							type = "revolute" 
+							axis_xyz = "0 0 1" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.5" 
+							parent = "${l00}" 
+							child = "${l01}" />
+
+    <xacro:m_link_cylinder 	name = "${l01}" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 0.2" 
+    						radius = "0.35" 
+    						length="0.4" />
+
+    <xacro:m_joint 			name = "${l01}_${l02}" 
+    						type = "revolute" 
+    						axis_xyz = "0 1 0" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 0.4" 
+    						parent = "${l01}" 
+    						child = "${l02}" />
+
+    <xacro:m_link_cylinder 	name = "${l02}" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 0.5" 
+    						radius = "0.10" 
+    						length="1" />
+
+    <xacro:m_joint 			name = "${l02}_${l03}" 
+    						type = "revolute" 
+    						axis_xyz = "0 1 0" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 1" 
+    						parent = "${l02}" 
+    						child = "${l03}" />
+
+	<xacro:m_link_cylinder 	name = "${l03}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.5" 
+							radius = "0.10" 
+							length="1" />
+
+    <xacro:m_joint 			name = "${l03}_${l04}" 
+    						type = "revolute" 
+    						axis_xyz = "0 1 0" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 1" 
+    						parent = "${l03}" 
+    						child = "${l04}" />
+
+	<xacro:m_link_cylinder 	name = "${l04}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.5" 
+							radius = "0.10" 
+							length="1" />
+
+    <xacro:m_joint 			name = "${l04}_${l05}" 
+    						type = "revolute" 
+    						axis_xyz = "0 0 1" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 1" 
+    						parent = "${l04}" 
+    						child = "${l05}" />
+
+	<xacro:m_link_cylinder 	name = "${l05}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.1" 
+							radius = "0.2" 
+							length="0.2" />
 
 
 </robot>
