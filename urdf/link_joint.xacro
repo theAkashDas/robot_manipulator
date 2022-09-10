@@ -12,8 +12,19 @@
     	</joint>
     </xacro:macro>	
 
-	<xacro:macro name="m_link_cylinder" params="name origin_xyz origin_rpy radius length">
+	<xacro:macro name="m_link_cylinder" params="name origin_xyz origin_rpy radius length mass ixx ixy ixz iyy iyz izz">
     <link name="${name}">
+      <inertial>
+        <mass value="${mass}" />
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+      </inertial>
+      <collision>
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <geometry>
+          <cylinder radius="${radius}" length="${length}" />
+        </geometry>
+      </collision>
       <visual>
         <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
         <geometry>
@@ -23,8 +34,19 @@
     </link>
   </xacro:macro>
 
-  <xacro:macro name="m_link_box" params="name origin_xyz origin_rpy size">
+  <xacro:macro name="m_link_box" params="name origin_xyz origin_rpy size mass ixx ixy ixz iyy iyz izz">
     <link name="${name}">
+      <inertial>
+        <mass value="${mass}" />
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+      </inertial>
+      <collision>
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <geometry>
+          <box size="${size}" />
+        </geometry>
+      </collision>
       <visual>
         <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
         <geometry>
