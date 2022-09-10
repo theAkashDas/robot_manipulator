@@ -67,9 +67,12 @@ roslaunch arm_a arm_rviz.launch
 ### Vidoes :
 
 #### Video 1 :
-![A](https://github.com/theAkashDas/robot_manipulator/blob/master/Videos/v1.gif) 
+https://user-images.githubusercontent.com/56507553/189474051-e167d7de-ddbb-4ec2-9db9-4c5db68e6177.mp4
 
 #### Video 2 :
 https://user-images.githubusercontent.com/56507553/189452882-20b8ea90-231a-4d94-abcc-88aa335bc7a2.mp4
+
+
+
 
 
