@@ -11,6 +11,9 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   urdf
+  controller_manager
+  joint_state_publisher
+  robot_state_publisher
 )
 
 ## System dependencies are found with CMake's conventions

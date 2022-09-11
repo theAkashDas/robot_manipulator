@@ -33,7 +33,7 @@ roslaunch arm_a arm_rviz.launch
 ```
 <node name="rviz" pkg="rviz" type="rviz" args=" -d $(find arm_a)/launch/config.rviz"/>
 ```
-- After that
+- After that :
 ```
 roslaunch arm_a arm_rviz.launch
 ```
@@ -47,7 +47,7 @@ roslaunch arm_a arm_rviz.launch
 <xacro:include filename = "$(find arm_a)/urdf/link_joint.xacro" />
 ```
 - Made the file name change in the launch file.
-- After that
+- After that :
 ```
 roslaunch arm_a arm_rviz.launch
 ```
@@ -63,7 +63,7 @@ roslaunch arm_a arm_rviz.launch
 - Added the intertia and collision parameters in the xacro file
 - inertia and collision properties depend on the robot model we are making.
 - After that added a spawn.launch file to launch gazebo simulation.
-- After that
+- After that :
 ```
 roslaunch arm_a spawn.launch
 rosrun gazebo_ros gazebo
@@ -71,7 +71,31 @@ rosrun gazebo_ros gazebo
 - Refer to Image 2.
 - The links have fallen down because stil there is no controller initialized.
 
-
+#### 0.0.8
+- Kept only 3 links and 2 joints to apply controller.
+- Added an allias in .bashrc and source .bashrc to kill th previous gzclient and gzserver since the model was not updating.
+```
+alias killg='killall gzclient && killall gzserver && killall rosmaster'
+```
+#### 0.0.9
+- Added transmission in arm_b.xacro file for the joints to implement controllers.
+- Made changes in the dependencies in CMakeLists.txt and package.xml
+- Added dependencies of joint state publisher, robot state publisher, controller manager.
+- Made changes in the spawn.launch file to include controller_manager
+- Encapsulated launch file inside a group tag.
+- Added joints.yaml in the config folder
+- joints.yaml contains the controller properties and names.
+- Added a gazebo plugin in arm_b.xacro file named gazebo_ros_control.
+- After that :
+```
+roscore
+rosrun gazebo_ros gazebo
+roslaunch arm_a spawn.launch
+rostopic list
+rostopic pub -1 /arm/joint2_position_controller/command std_msgs/Float64 "data: 0.7"
+rostopic pub -1 /arm/joint1_position_controller/command std_msgs/Float64 "data: 1"
+```
+- Refer to Video 3
 
 ---
 ### Images :
@@ -88,8 +112,10 @@ rosrun gazebo_ros gazebo
 https://user-images.githubusercontent.com/56507553/189474051-e167d7de-ddbb-4ec2-9db9-4c5db68e6177.mp4
 
 #### Video 2 :
-<!-- https://user-images.githubusercontent.com/56507553/189452882-20b8ea90-231a-4d94-abcc-88aa335bc7a2.mp4 -->
-https://user-images.githubusercontent.com/56507553/v2.mp4
+https://user-images.githubusercontent.com/56507553/189452882-20b8ea90-231a-4d94-abcc-88aa335bc7a2.mp4
+
+#### Video 3 :
+
 
 
 

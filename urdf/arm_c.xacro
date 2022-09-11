@@ -1,0 +1,52 @@
+<?xml version='1.0' ?>
+
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:include filename = "$(find arm_a)/urdf/link_joint.xacro" />
+	<xacro:include filename = "$(find arm_a)/urdf/robot_parameters.xacro" />
+	
+	<xacro:m_link_box 		name = "${l00}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0"
+							mass="1024"
+              				ixx="170.667" ixy="0" ixz="0"
+              				iyy="170.667" iyz="0"
+              				izz="170.667" 
+							size = "1 1 1" />
+
+	<xacro:m_joint 			name = "${l00}_${l01}" 
+							type = "revolute" 
+							axis_xyz = "0 0 1" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.5" 
+							parent = "${l00}" 
+							child = "${l01}" />
+
+    <xacro:m_link_cylinder 	name = "${l01}" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 0.2" 
+    						mass="57.906"
+              				ixx="12.679" ixy="0" ixz="0"
+              				iyy="12.679" iyz="0"
+              				izz="0.651"
+    						radius = "0.35" 
+    						length="0.4" />
+
+    <xacro:m_joint 			name = "${l01}_${l02}" 
+    						type = "revolute" 
+    						axis_xyz = "0 1 0" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 0.4" 
+    						parent = "${l01}" 
+    						child = "${l02}" />
+
+    <xacro:m_link_cylinder 	name = "${l02}" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 0.5" 
+    						mass="57.906"
+              				ixx="12.679" ixy="0" ixz="0"
+              				iyy="12.679" iyz="0"
+              				izz="0.651"
+    						radius = "0.10" 
+    						length="1" />
+</robot>
