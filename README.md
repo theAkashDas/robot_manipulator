@@ -97,6 +97,22 @@ rostopic pub -1 /arm/joint1_position_controller/command std_msgs/Float64 "data: 
 ```
 - Refer to Video 3
 
+#### 0.0.10
+- Added transmission properties in link_joint.xacro file
+- Added node for rqt
+- Added transmission for all the other joints.
+- Reduced the mass of the links and inertia.
+- Added lower and upper limit of the robot movement.
+- After that :
+```
+roscore
+rosrun gazebo_ros gazebo
+roslaunch arm_a spawn.launch
+rostopic list
+```
+- Then use the rqt_publisher to give the values to links and plot juggler to view it.
+- Refer to Video 4.
+
 ---
 ### Images :
 
@@ -115,6 +131,10 @@ https://user-images.githubusercontent.com/56507553/189474051-e167d7de-ddbb-4ec2-
 https://user-images.githubusercontent.com/56507553/189452882-20b8ea90-231a-4d94-abcc-88aa335bc7a2.mp4
 
 #### Video 3 :
+
+
+
+#### Video 4 :
 
 
 

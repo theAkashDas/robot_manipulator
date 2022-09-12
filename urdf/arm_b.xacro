@@ -20,26 +20,16 @@
 							origin_rpy = "0 0 0" 
 							origin_xyz = "0 0 0.5" 
 							parent = "${l00}" 
-							child = "${l01}" />
-
-	<transmission name="trans_${l00}_${l01}">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${l00}_${l01}">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="motor_${l00}_${l01}">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
+							child = "${l01}" 
+							limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5"/>
 
 
     <xacro:m_link_cylinder 	name = "${l01}" 
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 0.2" 
-    						mass="57.906"
-              				ixx="12.679" ixy="0" ixz="0"
-              				iyy="12.679" iyz="0"
+    						mass="10"
+              				ixx="1" ixy="0" ixz="0"
+              				iyy="1" iyz="0"
               				izz="0.651"
     						radius = "0.35" 
     						length="0.4" />
@@ -50,44 +40,36 @@
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 0.4" 
     						parent = "${l01}" 
-    						child = "${l02}" />
-
-    <transmission name="trans_${l01}_${l02}">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${l01}_${l02}">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="motor_${l00}_${l01}">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
+    						child = "${l02}" 
+    						limit_e="1000" limit_l="-0.75" limit_u="0.75" limit_v="0.5"/>
 
 
     <xacro:m_link_cylinder 	name = "${l02}" 
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 0.5" 
-    						mass="57.906"
-              				ixx="12.679" ixy="0" ixz="0"
-              				iyy="12.679" iyz="0"
+    						mass="12.906"
+              				ixx="1" ixy="0" ixz="0"
+              				iyy="1.679" iyz="0"
               				izz="0.651"
     						radius = "0.10" 
     						length="1" />
 
-    <!-- <xacro:m_joint 			name = "${l02}_${l03}" 
+    <xacro:m_joint 			name = "${l02}_${l03}" 
     						type = "revolute" 
     						axis_xyz = "0 1 0" 
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 1" 
     						parent = "${l02}" 
-    						child = "${l03}" />
+    						child = "${l03}" 
+    						limit_e="1000" limit_l="-0.75" limit_u="1.5" limit_v="0.5"/>
+
 
 	<xacro:m_link_cylinder 	name = "${l03}" 
 							origin_rpy = "0 0 0" 
 							origin_xyz = "0 0 0.5" 
-							mass="57.906"
-              				ixx="12.679" ixy="0" ixz="0"
-             		 		iyy="12.679" iyz="0"
+							mass="12.906"
+              				ixx="1.679" ixy="0" ixz="0"
+             		 		iyy="1.679" iyz="0"
               				izz="0.651"
 							radius = "0.10" 
 							length="1" />
@@ -98,14 +80,15 @@
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 1" 
     						parent = "${l03}" 
-    						child = "${l04}" />
+    						child = "${l04}" 
+    						limit_e="1000" limit_l="0" limit_u="2.5" limit_v="0.5"/>
 
 	<xacro:m_link_cylinder 	name = "${l04}" 
 							origin_rpy = "0 0 0" 
 							origin_xyz = "0 0 0.5" 
-							mass="57.906"
-              				ixx="12.679" ixy="0" ixz="0"
-              				iyy="12.679" iyz="0"
+							mass="12.906"
+              				ixx="1.679" ixy="0" ixz="0"
+              				iyy="1.679" iyz="0"
               				izz="0.651"
 							radius = "0.10" 
 							length="1" />
@@ -116,18 +99,19 @@
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 1" 
     						parent = "${l04}" 
-    						child = "${l05}" />
+    						child = "${l05}" 
+    						limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5"/>
 
 	<xacro:m_link_cylinder 	name = "${l05}" 
 							origin_rpy = "0 0 0" 
 							origin_xyz = "0 0 0.1" 
-							mass="18.056"
-              				ixx="0.479" ixy="0" ixz="0"
-              				iyy="0.479" iyz="0"
+							mass="2.056"
+              				ixx="0.179" ixy="0" ixz="0"
+              				iyy="0.179" iyz="0"
               				izz="0.204"
 							radius = "0.2" 
 							length="0.2" />
- -->
+
 
  <gazebo>
  	<plugin name = "gazebo_ros_control" filename = "libgazebo_ros_control.so" />
