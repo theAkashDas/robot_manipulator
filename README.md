@@ -113,6 +113,24 @@ rostopic list
 - Then use the rqt_publisher to give the values to links and plot juggler to view it.
 - Refer to Video 4.
 
+#### 0.0.11
+- Added a mesh folder in the package
+- Added a .stl file to that folder.
+- Changed the link 1 with the added mesh.
+- Commented out the other links.
+- After that :
+```
+roscore
+rosrun gazebo_ros gazebo
+roslaunch arm_a spawn.launch
+```
+- Then use the rqt_publisher to give the values to links and plot juggler to view it.
+- Refer to Video 5.
+- Next is to add an end effector mesh.
+- Add depth camera to the arm.
+- Implement Forward and Inverse Kinematics on the Arm
+- Study more on the Moment of Inertia along different axes.
+
 ---
 ### Images :
 
@@ -135,6 +153,8 @@ https://user-images.githubusercontent.com/56507553/189517449-66ffbf97-fba4-4ae5-
 
 #### Video 4 :
 https://user-images.githubusercontent.com/56507553/189584218-4586c8af-dde0-4e9b-84b3-f9caa7fadf7f.mp4
+
+#### Video 5 :
 
 
 

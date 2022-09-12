@@ -23,8 +23,17 @@
 							child = "${l01}" 
 							limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5"/>
 
+	<xacro:m_link_mesh name="${l01}"
+              origin_rpy="0 0 0" origin_xyz="0 0 -0.1"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://arm_a/meshes/Link1-v2.stl"
+              meshscale="0.001 0.001 0.001" />						
 
-    <xacro:m_link_cylinder 	name = "${l01}" 
+
+    <!-- <xacro:m_link_cylinder 	name = "${l01}" 
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 0.2" 
     						mass="10"
@@ -32,9 +41,9 @@
               				iyy="1" iyz="0"
               				izz="0.651"
     						radius = "0.35" 
-    						length="0.4" />
+    						length="0.4" /> -->
 
-    <xacro:m_joint 			name = "${l01}_${l02}" 
+    <!-- <xacro:m_joint 			name = "${l01}_${l02}" 
     						type = "revolute" 
     						axis_xyz = "0 1 0" 
     						origin_rpy = "0 0 0" 
@@ -110,7 +119,7 @@
               				iyy="0.179" iyz="0"
               				izz="0.204"
 							radius = "0.2" 
-							length="0.2" />
+							length="0.2" /> -->
 
 
  <gazebo>

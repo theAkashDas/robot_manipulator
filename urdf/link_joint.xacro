@@ -66,4 +66,27 @@
     </link>
   </xacro:macro>
 
+  <xacro:macro name="m_link_mesh" params="name origin_xyz origin_rpy meshfile meshscale mass ixx ixy ixz iyy iyz izz">
+    <link name="${name}">
+      <inertial>
+        <mass value="${mass}" />
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+      </inertial>
+      <collision>
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <geometry>
+          <mesh filename="${meshfile}" scale="${meshscale}"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <geometry>
+          <mesh filename="${meshfile}" scale="${meshscale}"/>
+        </geometry>
+        <material name="light_black"/>
+      </visual>
+    </link>
+  </xacro:macro>
+
 </robot>
