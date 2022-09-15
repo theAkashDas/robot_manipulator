@@ -134,6 +134,8 @@ roslaunch arm_a spawn.launch
 #### 0.0.12
 - Added another new link and made the joint fixed.
 - This link is to hold the depth camera in position.
+- Was tweeking with the pid values of the joint controller to give a efficient control.
+- Refer to Image 3
 
 #### 1.0.0
 - Starting with Depth Camera Integration in the Manipulator.
@@ -147,7 +149,7 @@ catkin build
 source devel/setup.bash
 roslaunch realsense2_description view_d435_model_rviz_gazebo.launch
 ```
-- Refer to Image 3.
+- Refer to Image 4.
 
 #### 1.0.1
 - Added a new xacro file named arm_c.xacro for adding depth camera.
@@ -174,7 +176,7 @@ rostopic list
 rosrun image_view image_view image:=/camera/depth/image_raw
 roslaunch arm_a arm_rviz.launch
 ```
-- Refer to Video 6.
+- Refer to Video 6 and Image 5,6.
 
 
 
@@ -189,6 +191,15 @@ roslaunch arm_a arm_rviz.launch
 
 #### Image 3:
 <img src="Images/a3.png" width="840"/>
+
+#### Image 4:
+<img src="Images/a4.png" width="840"/>
+
+#### Image 5:
+<img src="Images/a5.png" width="840"/>
+
+#### Image 6:
+<img src="Images/a6.png" width="840"/>
 
 
 ### Vidoes :
