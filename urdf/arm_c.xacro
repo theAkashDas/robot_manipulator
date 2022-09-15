@@ -4,6 +4,7 @@
 
 	<xacro:include filename = "$(find arm_a)/urdf/link_joint.xacro" />
 	<xacro:include filename = "$(find arm_a)/urdf/robot_parameters.xacro" />
+	<xacro:include filename = "$(find realsense2_description)/urdf/_d435.urdf.xacro" />
 	
 	<xacro:m_link_box 		name = "${l00}" 
 							origin_rpy = "0 0 0" 
@@ -20,14 +21,16 @@
 							origin_rpy = "0 0 0" 
 							origin_xyz = "0 0 0.5" 
 							parent = "${l00}" 
-							child = "${l01}" />
+							child = "${l01}" 
+							limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5"/>					
+
 
     <xacro:m_link_cylinder 	name = "${l01}" 
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 0.2" 
-    						mass="57.906"
-              				ixx="12.679" ixy="0" ixz="0"
-              				iyy="12.679" iyz="0"
+    						mass="10"
+              				ixx="1" ixy="0" ixz="0"
+              				iyy="1" iyz="0"
               				izz="0.651"
     						radius = "0.35" 
     						length="0.4" />
@@ -38,15 +41,99 @@
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 0.4" 
     						parent = "${l01}" 
-    						child = "${l02}" />
+    						child = "${l02}" 
+    						limit_e="1000" limit_l="-0.75" limit_u="0.75" limit_v="0.5"/>
+
 
     <xacro:m_link_cylinder 	name = "${l02}" 
     						origin_rpy = "0 0 0" 
     						origin_xyz = "0 0 0.5" 
-    						mass="57.906"
-              				ixx="12.679" ixy="0" ixz="0"
-              				iyy="12.679" iyz="0"
+    						mass="12.906"
+              				ixx="1" ixy="0" ixz="0"
+              				iyy="1.679" iyz="0"
               				izz="0.651"
     						radius = "0.10" 
     						length="1" />
+
+    <xacro:m_joint 			name = "${l02}_${l03}" 
+    						type = "revolute" 
+    						axis_xyz = "0 1 0" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 1" 
+    						parent = "${l02}" 
+    						child = "${l03}" 
+    						limit_e="1000" limit_l="-0.75" limit_u="1.5" limit_v="0.5"/>
+
+
+	<xacro:m_link_cylinder 	name = "${l03}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.5" 
+							mass="12.906"
+              				ixx="1.679" ixy="0" ixz="0"
+             		 		iyy="1.679" iyz="0"
+              				izz="0.651"
+							radius = "0.10" 
+							length="1" />
+
+    <xacro:m_joint 			name = "${l03}_${l04}" 
+    						type = "revolute" 
+    						axis_xyz = "0 1 0" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 1" 
+    						parent = "${l03}" 
+    						child = "${l04}" 
+    						limit_e="1000" limit_l="0" limit_u="2.5" limit_v="0.5"/>
+
+	<xacro:m_link_cylinder 	name = "${l04}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.5" 
+							mass="12.906"
+              				ixx="1.679" ixy="0" ixz="0"
+              				iyy="1.679" iyz="0"
+              				izz="0.651"
+							radius = "0.10" 
+							length="1" />
+
+    <joint name="${l04}_${l05}" type="fixed">
+	    <parent link="${l04}"/>
+	    <child link="${l05}"/>
+	    <origin xyz="0 0 1"/>
+  	</joint>						
+
+	<xacro:m_link_box 		name = "${l05}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.05"
+							mass="10"
+              				ixx="0.1" ixy="0" ixz="0"
+              				iyy="0.1" iyz="0"
+              				izz="0.05" 
+							size = "0.4 0.4 0.1" />
+						
+    <xacro:m_joint 			name = "${l05}_${l06}" 
+    						type = "revolute" 
+    						axis_xyz = "0 0 1" 
+    						origin_rpy = "0 0 0" 
+    						origin_xyz = "0 0 0.1" 
+    						parent = "${l05}" 
+    						child = "${l06}" 
+    						limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5"/>
+
+	<xacro:m_link_cylinder 	name = "${l06}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.05" 
+							mass="2.056"
+              				ixx="0.179" ixy="0" ixz="0"
+              				iyy="0.179" iyz="0"
+              				izz="0.204"
+							radius = "0.15" 
+							length="0.1" />
+
+	<xacro:sensor_d435 name="camera" topics_ns="camera" parent="${l05}" publish_pointcloud="true">
+    <origin xyz="-0.2 0 0.1" rpy="0 -1.57 0" />
+  </xacro:sensor_d435> 										
+
+
+ <gazebo>
+ 	<plugin name = "gazebo_ros_control" filename = "libgazebo_ros_control.so" />
+ </gazebo>
 </robot>

@@ -131,6 +131,53 @@ roslaunch arm_a spawn.launch
 - Implement Forward and Inverse Kinematics on the Arm
 - Study more on the Moment of Inertia along different axes.
 
+#### 0.0.12
+- Added another new link and made the joint fixed.
+- This link is to hold the depth camera in position.
+
+#### 1.0.0
+- Starting with Depth Camera Integration in the Manipulator.
+- Cloned the repositories for real sense.
+- Repo1 : https://github.com/pal-robotics/realsense_gazebo_plugin
+- Repo2 : https://github.com/issaiass/realsense2_description
+- After that :
+```
+cd catkin_ws
+catkin build
+source devel/setup.bash
+roslaunch realsense2_description view_d435_model_rviz_gazebo.launch
+```
+- Refer to Image 3.
+
+#### 1.0.1
+- Added a new xacro file named arm_c.xacro for adding depth camera.
+- Included the file from realsnse2_description package to use the depth camera in my project.
+```
+<xacro:include filename = "$(find realsense2_description)/urdf/_d435.urdf.xacro"
+```
+- Then added :
+```
+<xacro:sensor_d435 name="camera" topics_ns="camera" parent="${l05}" publish_pointcloud="true">
+  <origin xyz="-0.2 0 0.1" rpy="0 -1.57 0" />
+</xacro:sensor_d435>
+```
+- The origin xyz and rpy needs to be changed accordingly to fit in our previous model.
+
+#### 1.0.2
+- After making all the changes in .xacro file, we need to make changes to the launch file to launch the changed xacro.
+- After that :
+```
+roscore
+rosrun gazebo_ros gazebo
+roslaunch arm_a spawn.launch
+rostopic list
+rosrun image_view image_view image:=/camera/depth/image_raw
+roslaunch arm_a arm_rviz.launch
+```
+- Refer to Video 6.
+
+
+
 ---
 ### Images :
 
@@ -139,6 +186,10 @@ roslaunch arm_a spawn.launch
 
 #### Image 2 :
 <img src="Images/a2.png" width="840"/>
+
+#### Image 3:
+<img src="Images/a3.png" width="840"/>
+
 
 ### Vidoes :
 
@@ -157,6 +208,6 @@ https://user-images.githubusercontent.com/56507553/189584218-4586c8af-dde0-4e9b-
 #### Video 5 :
 https://user-images.githubusercontent.com/56507553/189593023-a71af6a2-bd72-45b4-9c49-204aca4e808f.mp4
 
-
+#### Video 6 :
 
 

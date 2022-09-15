@@ -20,7 +20,11 @@ joint4_position_controller:
   type: effort_controllers/JointPositionController
   joint: link_3_link_4
   pid: {p: 2000.0, i: 50, d: 200.0}
-joint5_position_controller:
+# joint5_position_controller:
+#   type: effort_controllers/JointPositionController
+#   joint: link_4_link_5
+#   pid: {p: 700.0, i: 50, d: 70.0} 
+joint6_position_controller:
   type: effort_controllers/JointPositionController
-  joint: link_4_link_5
-  pid: {p: 700.0, i: 50, d: 70.0}  
+  joint: link_5_link_6
+  pid: {p: 700.0, i: 50, d: 70.0}   

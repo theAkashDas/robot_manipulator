@@ -89,4 +89,28 @@
     </link>
   </xacro:macro>
 
+  <!-- Testing Depth Camera -->
+  <xacro:macro name = "m_link_camera" params="name origin_xyz origin_rpy size mass ixx ixy ixz iyy iyz izz">
+    <link name="${name}">
+      <inertial>
+        <mass value="${mass}" />
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}" />
+      </inertial>
+      <collision>
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <geometry>
+          <box size="${size}" />
+        </geometry>
+      </collision>
+      <visual>
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}" />
+        <geometry>
+          <box size="${size}" />
+        </geometry>
+      </visual>
+    </link>
+  </xacro:macro>
+
+
 </robot>
