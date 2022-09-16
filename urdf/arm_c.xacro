@@ -25,44 +25,44 @@
 							limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5"/>					
 
 
-    <xacro:m_link_cylinder 	name = "${l01}" 
-    						origin_rpy = "0 0 0" 
-    						origin_xyz = "0 0 0.2" 
-    						mass="10"
-              				ixx="1" ixy="0" ixz="0"
-              				iyy="1" iyz="0"
-              				izz="0.651"
-    						radius = "0.35" 
-    						length="0.4" />
+  <xacro:m_link_cylinder 	name = "${l01}" 
+  						origin_rpy = "0 0 0" 
+  						origin_xyz = "0 0 0.2" 
+  						mass="10"
+            				ixx="1" ixy="0" ixz="0"
+            				iyy="1" iyz="0"
+            				izz="0.651"
+  						radius = "0.35" 
+  						length="0.4" />
 
-    <xacro:m_joint 			name = "${l01}_${l02}" 
-    						type = "revolute" 
-    						axis_xyz = "0 1 0" 
-    						origin_rpy = "0 0 0" 
-    						origin_xyz = "0 0 0.4" 
-    						parent = "${l01}" 
-    						child = "${l02}" 
-    						limit_e="1000" limit_l="-0.75" limit_u="0.75" limit_v="0.5"/>
+  <xacro:m_joint 			name = "${l01}_${l02}" 
+  						type = "revolute" 
+  						axis_xyz = "0 1 0" 
+  						origin_rpy = "0 0 0" 
+  						origin_xyz = "0 0 0.4" 
+  						parent = "${l01}" 
+  						child = "${l02}" 
+  						limit_e="1000" limit_l="-0.75" limit_u="0.75" limit_v="0.5"/>
 
 
-    <xacro:m_link_cylinder 	name = "${l02}" 
-    						origin_rpy = "0 0 0" 
-    						origin_xyz = "0 0 0.5" 
-    						mass="12.906"
-              				ixx="1" ixy="0" ixz="0"
-              				iyy="1.679" iyz="0"
-              				izz="0.651"
-    						radius = "0.10" 
+  <xacro:m_link_cylinder 	name = "${l02}" 
+  						origin_rpy = "0 0 0" 
+  						origin_xyz = "0 0 0.5" 
+  						mass="12.906"
+            				ixx="1" ixy="0" ixz="0"
+            				iyy="1.679" iyz="0"
+            				izz="0.651"
+  						radius = "0.10" 
     						length="1" />
 
-    <xacro:m_joint 			name = "${l02}_${l03}" 
-    						type = "revolute" 
-    						axis_xyz = "0 1 0" 
-    						origin_rpy = "0 0 0" 
-    						origin_xyz = "0 0 1" 
-    						parent = "${l02}" 
-    						child = "${l03}" 
-    						limit_e="1000" limit_l="-0.75" limit_u="1.5" limit_v="0.5"/>
+  <xacro:m_joint 			name = "${l02}_${l03}" 
+  						type = "revolute" 
+  						axis_xyz = "0 1 0" 
+  						origin_rpy = "0 0 0" 
+  						origin_xyz = "0 0 1" 
+  						parent = "${l02}" 
+  						child = "${l03}" 
+  						limit_e="1000" limit_l="-0.75" limit_u="1.5" limit_v="0.5"/>
 
 
 	<xacro:m_link_cylinder 	name = "${l03}" 
@@ -75,14 +75,14 @@
 							radius = "0.10" 
 							length="1" />
 
-    <xacro:m_joint 			name = "${l03}_${l04}" 
-    						type = "revolute" 
-    						axis_xyz = "0 1 0" 
-    						origin_rpy = "0 0 0" 
-    						origin_xyz = "0 0 1" 
-    						parent = "${l03}" 
-    						child = "${l04}" 
-    						limit_e="1000" limit_l="0" limit_u="2.5" limit_v="0.5"/>
+  <xacro:m_joint 			name = "${l03}_${l04}" 
+  						type = "revolute" 
+  						axis_xyz = "0 1 0" 
+  						origin_rpy = "0 0 0" 
+  						origin_xyz = "0 0 1" 
+  						parent = "${l03}" 
+  						child = "${l04}" 
+  						limit_e="1000" limit_l="0" limit_u="2.5" limit_v="0.5"/>
 
 	<xacro:m_link_cylinder 	name = "${l04}" 
 							origin_rpy = "0 0 0" 
@@ -93,6 +93,8 @@
               				izz="0.651"
 							radius = "0.10" 
 							length="1" />
+
+										<!-- Depth Camera part -->
 
     <joint name="${l04}_${l05}" type="fixed">
 	    <parent link="${l04}"/>
@@ -127,6 +129,46 @@
               				izz="0.204"
 							radius = "0.15" 
 							length="0.1" />
+
+							<!-- Gripper Fingers -->
+	<xacro:m_joint 			name = "${l06}_${l07}" 
+  						type = "prismatic" 
+  						axis_xyz = "0 1 0" 
+  						origin_rpy = "0 0 0" 
+  						origin_xyz = "0 0 0.05" 
+  						parent = "${l06}" 
+  						child = "${l07}" 
+  						limit_e="1000" limit_l="0.02" limit_u="0.13" limit_v="0.3"/>
+
+	<xacro:m_link_box 		name = "${l07}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.125"
+							mass="1"
+              				ixx="0.001" ixy="0" ixz="0"
+              				iyy="0.001" iyz="0"
+              				izz="0.005" 
+							size = "0.08 0.01 0.15" />	
+
+	<xacro:m_joint 			name = "${l06}_${l08}" 
+  						type = "prismatic" 
+  						axis_xyz = "0 -1 0" 
+  						origin_rpy = "0 0 0" 
+  						origin_xyz = "0 0 0.05" 
+  						parent = "${l06}" 
+  						child = "${l08}" 
+  						limit_e="1000" limit_l="0.02" limit_u="0.13" limit_v="0.3"/>
+
+	<xacro:m_link_box 		name = "${l08}" 
+							origin_rpy = "0 0 0" 
+							origin_xyz = "0 0 0.125"
+							mass="1"
+              				ixx="0.001" ixy="0" ixz="0"
+              				iyy="0.001" iyz="0"
+              				izz="0.005" 
+							size = "0.08 0.01 0.15" />							
+							
+
+
 
 	<xacro:sensor_d435 name="camera" topics_ns="camera" parent="${l05}" publish_pointcloud="true">
     <origin xyz="-0.2 0 0.1" rpy="0 -1.57 0" />

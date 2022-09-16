@@ -24,7 +24,9 @@
                 joint3_position_controller
                 joint4_position_controller
                 joint6_position_controller
-                
+                joint7_position_controller
+                joint8_position_controller
+
                 --timeout 60">
             </node>
             <!-- rqt -->

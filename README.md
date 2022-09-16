@@ -178,6 +178,21 @@ roslaunch arm_a arm_rviz.launch
 ```
 - Refer to Video 6 and Image 5,6.
 
+#### 1.0.3
+- Added two new links to the robot model which will act as grippers.
+- Added the prismatic joints for the grippers.
+- Made changes in the joints.yaml and also launch file.
+- Added joint8_position_controller.
+- Added a folder named scripts.
+- Added a python script named grip.py for controlling the grippers.
+```
+roscore
+rosrun gazebo_ros gazebo
+roslaunch arm_a spawn.launch
+cd catkin_ws/src/arm_a/scripts
+python3 grip.py
+```
+- Refer to Video 7.
 
 
 ---
@@ -222,6 +237,5 @@ https://user-images.githubusercontent.com/56507553/189593023-a71af6a2-bd72-45b4-
 #### Video 6 :
 https://user-images.githubusercontent.com/56507553/190442685-eff615f6-7fe6-453d-b987-bb5805350a95.mp4
 
-
-
+#### Video 7 :
 
